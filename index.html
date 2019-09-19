@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <script>
+       
+        function actualizar_votacion(prueba)
+        {
+        df = JObject.Parse(File.ReadAllText(@"C:\Users\kevin\Documents"));
+
+        var dive = document.getElementById("contenido")
+        var desc=document.createElement("H1");
+        desc.id="descripcion";
+        desc.innerHTML=prueba.descripcion;
+        dive.appendChild(desc);
+        dive.appendChild(document.createElement("br"));
+        
+        var lol=0;
+        var lio;
+        var loi;
+        
+        while(prueba.opciones.length>lol){
+            lio =document.createElement("input");
+            lio.type="checkbox";
+            
+
+            lio.id=prueba.opciones[lol]; 
+            dive.appendChild(lio)
+            loi=document.createElement("text");
+            loi.innerHTML=prueba.opciones[lol];
+            dive.appendChild(loi);
+            dive.appendChild(document.createElement("br"));
+            lol++;
+        }
+        
+        
+        document.getElementById("bot").disabled=true;
+        }
+        
+
+    </script>
+</head>
+<body>
+    
+        <button id="bot" onclick="actualizar_votacion(this)">Agregar nueva tarea</button>
+    <div id="contenido"></div> 
+
+
+   
+       
+    
+   
+    
+</body>
+</html>

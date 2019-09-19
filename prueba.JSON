@@ -1,0 +1,5 @@
+{"descripcion":"alboroto",
+    "opciones":["a favor","en contra","lol"],
+    "modalidad":{"modo":"unica","cantidad":1},
+    "enBlanco":true,
+    "publica":false}
