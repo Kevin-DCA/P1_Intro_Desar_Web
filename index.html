@@ -7,12 +7,12 @@
     
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
+    
+    
     <script>
-       
-        function actualizar_votacion(prueba)
+       function actualizar_votacion(prueba)
         {
-        df = JObject.Parse(File.ReadAllText(@"C:\Users\kevin\Documents"));
-
+        
         var dive = document.getElementById("contenido")
         var desc=document.createElement("H1");
         desc.id="descripcion";
@@ -46,15 +46,14 @@
     </script>
 </head>
 <body>
-    
-        <button id="bot" onclick="actualizar_votacion(this)">Agregar nueva tarea</button>
+    <textarea id="JSON" name="JSON" rows="20" cols="60">{"descripcion":"Dar aval el proyecto de ley #12345",
+        "opciones":["a favor", "en contra"],
+        "modalidad":{"modo":"unica", "cantidad":1},
+        "enBlanco":true,
+        "publica":false}
+    </textarea>
+        
     <div id="contenido"></div> 
 
-
-   
-       
-    
-   
-    
 </body>
 </html>

@@ -1,8 +1,8 @@
-#bot{
-    background:greenyellow;
-    top: 100px;
-    margin:100px;
-}
+
 #contenido{
     margin-left: 100px;
+}
+#JSON{
+    background: blue;
+    margin-left: 50%;
 }
