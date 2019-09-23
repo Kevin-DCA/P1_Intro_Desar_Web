@@ -10,11 +10,15 @@
     
     
     <script>
-       function actualizar_votacion(prueba)
-        {
-        
+       function actualizar_votacion(){
+        document.getElementById("contenido").remove()
+        var inr=document.createElement("div")
+        inr.id="contenido"
+        document.getElementsByTagName('body')[0].appendChild(inr);
         var dive = document.getElementById("contenido")
         var desc=document.createElement("H1");
+        
+        var prueba=JSON.parse(document.getElementById("JSON").value)
         desc.id="descripcion";
         desc.innerHTML=prueba.descripcion;
         dive.appendChild(desc);
@@ -39,20 +43,22 @@
         }
         
         
-        document.getElementById("bot").disabled=true;
+        
         }
         
 
     </script>
 </head>
-<body>
-    <textarea id="JSON" name="JSON" rows="20" cols="60">{"descripcion":"Dar aval el proyecto de ley #12345",
-        "opciones":["a favor", "en contra"],
-        "modalidad":{"modo":"unica", "cantidad":1},
-        "enBlanco":true,
-        "publica":false}
+<body><div id="inicio">
+    <textarea id="JSON" name="JSON" rows="20" cols="60">
+{"descripcion":"Dar aval el proyecto de ley #12345",
+"opciones":["a favor","en contra"],
+"modalidad":{"modo":"unica","cantidad":1},
+"enBlanco":true,"publica":false}
     </textarea>
-        
+       <input type="button" id="inicio" onclick="actualizar_votacion()">
+       
+    </div>
     <div id="contenido"></div> 
 
 </body>
