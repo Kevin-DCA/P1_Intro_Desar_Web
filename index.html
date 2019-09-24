@@ -52,11 +52,14 @@
         function enviar(){
             var lista=document.getElementById("contenido").childNodes;
             var respuestas="{\"respuesta\":[";
+            var cont=0;
             for (let index = 0; index <= lista.length-1; index++) {
                 if(lista[index].type=="checkbox"){
                    
                 if(lista[index].checked==true){
-                    respuestas=respuestas+"\""+lista[index].id+"\",";
+                    if(cont>=1){respuestas=respuestas+","}
+                    respuestas=respuestas+"\""+lista[index].id+"\"";
+                    cont++;
                 }}}
                 
                 document.getElementById("resultado").value=respuestas+"]}"
