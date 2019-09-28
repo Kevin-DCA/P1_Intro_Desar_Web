@@ -9,120 +9,13 @@
     <title>Document</title>
     
     
-    <script>
-        function checked1(){
-            var prueba=JSON.parse(document.getElementById("JSON").value);
-            var lista=document.getElementById("contenido").childNodes;
-            var cont=0;
-            for (let index = 0; index <= lista.length-1; index++) {
-                if(lista[index].type=="checkbox"){
-                   
-                if(lista[index].checked==true){
-                    cont++;
-                }}}
-                if(prueba.enBlanco&& cont==0){
-                    alert("su voto fue enviado correctamente");
-                    enviar();
-                }
-                if(!prueba.enBlanco&& cont==0){
-                    alert("su seleccion no puede estar vacia");
-                }
-           else if(prueba.modalidad.modo=="unica"){
-             if (cont>1){
-                    alert("Seleccione unicamente una opcion");
-                   }
-            else{
-                alert("su voto fue enviado correctamente");
-                enviar();
-            }
-                }
-            else if(prueba.modalidad.modo=="multiple"){
-                if (cont>parseInt(prueba.modalidad.cantidad,10)){
-                    alert("Seleccione unicamente "+prueba.modalidad.cantidad+" opciones");
-                   } 
-                else if(cont<parseInt(prueba.modalidad.cantidad,10)){
-                    alert("faltan "+(prueba.modalidad.cantidad-cont)+" opciones en su seleccion")
-                }
-                else{alert("su voto fue enviado correctamente"); 
-                enviar();}
-                }
-                cont=0;
-                
-        }
-        function enviar(){
-            var lista=document.getElementById("contenido").childNodes;
-            var respuestas="{\"respuesta\":[";
-            var cont=0;
-            for (let index = 0; index <= lista.length-1; index++) {
-                if(lista[index].type=="checkbox"){
-                   
-                if(lista[index].checked==true){
-                    if(cont>=1){respuestas=respuestas+","}
-                    respuestas=respuestas+"\""+lista[index].id+"\"";
-                    cont++;
-                }}}
-                
-                document.getElementById("resultado").value=respuestas+"]}"
-        }
-  
-       function actualizar_votacion(){
-        var prueba=JSON.parse(document.getElementById("JSON").value);
-        var dive = document.getElementById("contenido")
-        dive.innerHTML = '';
-        var desc=document.createElement("H1");
-        
-        
-        desc.id="descripcion";
-        desc.innerHTML=prueba.descripcion;
-        dive.appendChild(desc);
-        dive.appendChild(document.createElement("br"));
-        
-        var lol=0;
-        var lio;
-        var loi;
-        
-        while(prueba.opciones.length>lol){
-            lio =document.createElement("input");
-           lio.type="checkbox"
-           lio.id="checkbox "+lol;
-            lio.id=prueba.opciones[lol]; 
-            lio.style.height="40px";
-            lio.style.width="50px"
-            dive.appendChild(lio)
-            loi=document.createElement("text");
-            loi.innerHTML=prueba.opciones[lol];
-            loi.id="checkbox_text "+lol;
-            dive.appendChild(loi);
-            dive.appendChild(document.createElement("br"));
-            dive.appendChild(document.createElement("br"));
-            if(!prueba.publica){
-                loi.style.opacity="0.8";
-            }
-           asignar(lol);
-            lol++;
-        }} 
-        function asignar(id){
-            var prueba=JSON.parse(document.getElementById("JSON").value);
-            document.getElementById(prueba.opciones[id]).onmousedown=function(){
-                console.log(parseInt(document.getElementById("checkbox_text "+id).style.opacity,10));
-                if(parseInt(document.getElementById("checkbox_text "+id).style.opacity,10)>0){
-                   
-                document.getElementById("checkbox_text "+id).style.opacity=""+parseInt(document.getElementById("checkbox_text "+id).style.opacity,10)-0,01;
-            }}
-            document.getElementById(prueba.opciones[id]).onmouseup=function(){
-                console.log(parseInt(document.getElementById("checkbox_text "+id).style.opacity,10));
-                if(parseInt(document.getElementById("checkbox_text "+id).style.opacity,10)<1){
-                 
-                document.getElementById("checkbox_text "+id).style.opacity="0,8";
-                
-            }}
-            
-        }</script>
+    <script src="main.js"></script>
 </head>
 <body>
     <div id="up" >
 VOTACIONES
     </div>
+    <h1>JSON DE LA VOTACION</h1>
     <textarea id="JSON" name="JSON" rows="20" cols="100">
 {"descripcion":"Dar aval el proyecto de ley #12345",
 "opciones":["a favor","en contra"],
@@ -134,10 +27,12 @@ VOTACIONES
        <input type="button" id="inicio" value="INICIAR VOTACION" onclick="actualizar_votacion()">
       
     <br>
-    <br>
+    <br><br><br>
+    <h1>PREGUNTA DE VOTACION</h1>
     <div id="contenido"></div> 
     <br>
     <input type="button" id="enviar" value="ENVIAR VOTACION" onclick="checked1()">
+    <h1>RESPUESTA DE LA VOTACION EN JSON</h1>
     <textarea id="resultado" name="resul" rows="20" cols="100" >
             
                 </textarea>
